@@ -219,3 +219,25 @@ while True:
             continue
         print(f"\nBienvenido {usuario.nombre}")
         input("Presione ENTER para continuar...")
+
+        while True:
+            menuprincipal()
+            op2 = int(input("Opción: "))
+
+            if op2 == 1:
+                ingresardatos()
+            elif op2 == 2:
+                mostrartodo()
+            elif op2 == 3:
+                modificarcliente()
+            elif op2 == 4:
+                eliminarcliente()
+            elif op2 == 5:
+                break
+            else:
+                print("Opción inválida")
+                input("Presione ENTER para continuar...")
+    elif op == 2:
+        ingresoUsuarios()
+    else:
+        break
