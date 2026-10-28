@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-10-2026 a las 14:40:55
+-- Tiempo de generación: 28-10-2026 a las 15:35:20
 -- Versión del servidor: 8.0.17
 -- Versión de PHP: 7.3.10
 
@@ -40,6 +40,13 @@ CREATE TABLE `cliente` (
   `deuda` int(11) NOT NULL,
   `Tipo_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`USER_ID`, `run`, `nombre`, `apellido`, `direccion`, `fono`, `correo`, `montoCredito`, `deuda`, `Tipo_id`) VALUES
+(1, '22216564-4', 'Diego', 'Prado', 'Quillota', '56939697290', 0, 500000, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -79,6 +86,14 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `username`, `password_hash`, `nombre`, `apellido`, `email`, `tipo_usuario`, `fecha_registro`) VALUES
+(1, 'elale066', '$2b$12$6KkkbFMmuTd6hJVM90KYWu4mzZqbYYDWehWTmpXS9qnIHSNA1KYSq', 'Alexander', 'Pinto Billiet', 'alexander.pinto03@inacapmail.cl', 'Administrador', '2026-10-28 15:26:51'),
+(2, 'pancho', '$2b$12$uX2/Phqp0fNZmriSvG4TbuHd0JM.i1naAveo4WUCkBVLegjJSxts2', 'pancho', 'pancho', 'pancho', 'Vendedor', '2026-10-28 15:34:13');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -108,7 +123,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`
@@ -120,7 +135,7 @@ ALTER TABLE `tipo`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
