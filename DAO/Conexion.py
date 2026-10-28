@@ -2,12 +2,14 @@ import pymysql
 
 class Conexion:
     def __init__(self, host, user, password, db):
+        self.db = None
+        self.cursor = None
         try:
             self.db = pymysql.connect(
-                host = host,
-                user = user,
-                password = password,
-                db = db
+                host=host,
+                user=user,
+                password=password,
+                db=db
             )
             self.cursor = self.db.cursor()
         except Exception as e:
@@ -16,7 +18,9 @@ class Conexion:
     # --------------------------------------------
     def ejecuta_query(self, sql, valores=None):
         try:
-            if valores:
+            if not self.db or not self.cursor:
+                return None
+            if valores is not None:
                 self.cursor.execute(sql, valores)
             else:
                 self.cursor.execute(sql)
@@ -29,6 +33,8 @@ class Conexion:
     def desconectar(self): # Cierra la conexión con la base de datos.
         if self.db:
             self.db.close()
+            self.db = None
+            self.cursor = None
 
     def commit(self): # Confirma o guarda los cambios realizados en la base de datos.
         if self.db:
@@ -41,8 +47,10 @@ class Conexion:
     # --------------------------------------------
     def obtenerUsuario(self, username):
         try:
+            if not self.db or not self.cursor:
+                return None
             sql = "SELECT * FROM usuarios WHERE username = %s"
-            cursor = self.ejecuta_query(sql, {username,})
+            cursor = self.ejecuta_query(sql, (username,))
             if cursor:
                 return cursor.fetchone()
             return None

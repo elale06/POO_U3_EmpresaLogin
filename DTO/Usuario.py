@@ -19,7 +19,12 @@ class Usuario:
     def login(username, password):
         con = None
         try:
-            con = Conexion(host, user, password, db)
+            # La contraseña que llega aquí es la de la cuenta del usuario
+            # y NO debe reemplazar la contraseña de la base de datos.
+            con = Conexion(host, user, passwordS, db)
+            if not con or not con.db:
+                return None
+
             usuario_data = con.obtenerUsuario(username)
 
             if usuario_data:
